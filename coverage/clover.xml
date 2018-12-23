@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1545584931304" clover="3.2.0">
+  <project timestamp="1545584931304" name="All files">
+    <metrics statements="96" coveredstatements="90" conditionals="80" coveredconditionals="79" methods="20" coveredmethods="19" elements="196" coveredelements="188" complexity="0" loc="96" ncloc="96" packages="2" files="3" classes="3">
+      <package name="src">
+        <metrics statements="88" coveredstatements="83" conditionals="80" coveredconditionals="79" methods="16" coveredmethods="16"/>
+        <file name="Opcode.ts" path="/Users/dcampion/Documents/lets-do-javascript/low-level/src/Opcode.ts">
+          <metrics statements="75" coveredstatements="70" conditionals="74" coveredconditionals="73" methods="10" coveredmethods="10"/>
+          <line num="2" count="1" type="stmt"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="7" count="1" type="stmt"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="15" count="1" type="stmt"/>
+          <line num="18" count="38" type="stmt"/>
+          <line num="19" count="38" type="stmt"/>
+          <line num="20" count="38" type="stmt"/>
+          <line num="21" count="37" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+          <line num="26" count="3" type="stmt"/>
+          <line num="28" count="2" type="stmt"/>
+          <line num="32" count="38" type="stmt"/>
+          <line num="34" count="5" type="stmt"/>
+          <line num="36" count="2" type="stmt"/>
+          <line num="38" count="2" type="stmt"/>
+          <line num="40" count="1" type="stmt"/>
+          <line num="42" count="1" type="stmt"/>
+          <line num="44" count="1" type="stmt"/>
+          <line num="46" count="1" type="stmt"/>
+          <line num="48" count="1" type="stmt"/>
+          <line num="50" count="1" type="stmt"/>
+          <line num="52" count="1" type="stmt"/>
+          <line num="54" count="1" type="stmt"/>
+          <line num="56" count="9" type="stmt"/>
+          <line num="58" count="1" type="stmt"/>
+          <line num="60" count="1" type="stmt"/>
+          <line num="62" count="1" type="stmt"/>
+          <line num="64" count="1" type="stmt"/>
+          <line num="66" count="1" type="stmt"/>
+          <line num="68" count="1" type="stmt"/>
+          <line num="70" count="1" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="76" count="0" type="stmt"/>
+          <line num="78" count="1" type="stmt"/>
+          <line num="80" count="1" type="stmt"/>
+          <line num="82" count="1" type="stmt"/>
+          <line num="84" count="1" type="stmt"/>
+          <line num="86" count="2" type="stmt"/>
+          <line num="88" count="2" type="stmt"/>
+          <line num="90" count="1" type="stmt"/>
+          <line num="92" count="1" type="stmt"/>
+          <line num="94" count="0" type="stmt"/>
+          <line num="96" count="9" type="stmt"/>
+          <line num="98" count="1" type="stmt"/>
+          <line num="100" count="1" type="stmt"/>
+          <line num="102" count="1" type="stmt"/>
+          <line num="104" count="1" type="stmt"/>
+          <line num="106" count="1" type="stmt"/>
+          <line num="108" count="1" type="stmt"/>
+          <line num="110" count="1" type="stmt"/>
+          <line num="112" count="1" type="stmt"/>
+          <line num="114" count="1" type="stmt"/>
+          <line num="116" count="0" type="stmt"/>
+          <line num="119" count="1" type="stmt"/>
+          <line num="123" count="37" type="stmt"/>
+          <line num="126" count="4" type="stmt"/>
+          <line num="129" count="2" type="stmt"/>
+          <line num="132" count="2" type="stmt"/>
+          <line num="143" count="14" type="cond" truecount="2" falsecount="0"/>
+          <line num="146" count="5" type="stmt"/>
+          <line num="147" count="9" type="cond" truecount="1" falsecount="1"/>
+          <line num="150" count="9" type="stmt"/>
+          <line num="152" count="0" type="stmt"/>
+          <line num="166" count="13" type="stmt"/>
+          <line num="168" count="2" type="stmt"/>
+          <line num="171" count="0" type="stmt"/>
+          <line num="175" count="2" type="stmt"/>
+          <line num="183" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="184" count="2" type="stmt"/>
+          <line num="186" count="4" type="stmt"/>
+          <line num="192" count="5" type="stmt"/>
+          <line num="199" count="9" type="stmt"/>
+          <line num="206" count="13" type="stmt"/>
+        </file>
+        <file name="Token.ts" path="/Users/dcampion/Documents/lets-do-javascript/low-level/src/Token.ts">
+          <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
+          <line num="2" count="2" type="stmt"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="9" count="105" type="stmt"/>
+          <line num="10" count="105" type="stmt"/>
+          <line num="14" count="2" type="stmt"/>
+          <line num="18" count="3" type="stmt"/>
+          <line num="22" count="6" type="stmt"/>
+          <line num="26" count="9" type="stmt"/>
+          <line num="28" count="1" type="stmt"/>
+          <line num="30" count="4" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="36" count="3" type="stmt"/>
+          <line num="41" count="2" type="stmt"/>
+        </file>
+      </package>
+      <package name="src.util">
+        <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <file name="OpcodeUtils.ts" path="/Users/dcampion/Documents/lets-do-javascript/low-level/src/util/OpcodeUtils.ts">
+          <metrics statements="8" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+          <line num="4" count="2" type="stmt"/>
+          <line num="5" count="38" type="stmt"/>
+          <line num="16" count="2" type="stmt"/>
+          <line num="17" count="7" type="stmt"/>
+          <line num="21" count="2" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="25" count="2" type="stmt"/>
+          <line num="26" count="2" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>

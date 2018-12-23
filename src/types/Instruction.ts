@@ -1,0 +1,34 @@
+export const enum Instruction {
+    CLS = 'CLS',  //Clear the screen
+    RET = 'RET',  //Return from subroutine
+    JMP = 'JMP',  //Jump to address XXX
+    JSR = 'JSR',  //Jump to subroutine at address XXX
+    SKEQ = 'SKEQ',  //Skip if register not equals (register or constant)
+    SKNE = 'SKNE',  //Skip if register not equals (register or constant)
+    MOV = 'MOV',  //Move register y into r
+    OR = 'OR',  //or register y into r
+    AND = 'AND',  //and register y into r
+    XOR = 'XOR', //exclusiveor register y into r
+    ADD = 'ADD', //add register y to r carry flag in f
+    SUB = 'SUB', //subtract register y from r, carry flag in f if borrow
+    SHR = 'SHR', //Shift register r right. LSB goes in F
+    RSB = 'RSB', //Subtract register r from y, result in r. Carry flag in f if borrow
+    SHL = 'SHL', //Shift register r left. MSB goes in F
+    MVI = 'MVI', //Load index register
+    JMI = 'JMI', //Jump to Address XXX+Register 0
+    RAND = 'RAND', //Random number less than or equal to XXX
+    DRAW = 'DRAW', //Draw sprite at screen location rx,ry height s
+    SKPR = 'SKPR', //Skip if key pressed
+    SKUP = 'SKUP', //Skip if key not pressed
+    GDEL = 'GDEL', //Load delay timer into vr
+    KEY = 'KEY', //wait for for keypress,put key in register vr
+    SDEL = 'SDEL', //set the delay timer to vr
+    SSND = 'SSND', //Set sound timer to vr
+    ADI = 'ADI', //add register vr to the index register
+    FONT = 'FONT', //point I to the sprite for hexadecimal character in vr
+    BCD = 'BCD', //store the bcd representation of register vr at location I,I+1,I+2
+    STR = 'STR', //store registers v0-vr at location I onwards
+    LDR = 'LDR', //load registers v0-vr from location I onwards
+    NOOP = 'NOOP', //no operation
+    DATA = 'DATA'
+}

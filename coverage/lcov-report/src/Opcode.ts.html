@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/Opcode.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">src</a> Opcode.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.42% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>71/76</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.65% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>73/74</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/10</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">93.33% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>70/75</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">37x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {OpcodeBytes} from "./interfaces/OpcodeBytes";
+import {parseOpcode, toOpcodeString} from "./util/OpcodeUtils";
+import {Instruction} from "./types/Instruction";
+import {Token} from "./Token";
+import {TokenType} from "./types/TokenType";
+&nbsp;
+export class Opcode {
+    bytes: OpcodeBytes;
+    rawOpcode: number;
+    instruction: Token;
+    args: Array&lt;Token&gt;;
+    label?: Token;
+&nbsp;
+    static INSTRUCTION_PADDING: number = 6;
+    static ARGUMENTS_PADDING: number = 20;
+&nbsp;
+    constructor(opcode: number) {
+        this.rawOpcode = opcode;
+        this.bytes = parseOpcode(opcode);
+        this.instruction = new Token(TokenType.INSTRUCTION, this.getInstruction());
+        this.args = this.getArgs();
+    }
+&nbsp;
+    toString(): string {
+        const instruction = this.instruction.toString().padEnd(Opcode.INSTRUCTION_PADDING, ' ');
+        const args = this.args.map(token =&gt; token.toString()).join(', ').padEnd(Opcode.ARGUMENTS_PADDING, ' ');
+&nbsp;
+        return `${instruction}${args}`;
+    }
+&nbsp;
+    private getInstruction(): Instruction {
+        switch (this.bytes.msb) {
+            case 0x0:
+                switch (this.bytes.kk) {
+                    case 0xE0:
+                        return Instruction.CLS;
+                    case 0xEE:
+                        return Instruction.RET;
+                }
+                break;
+            case 0x1:
+                return Instruction.JMP;
+            case 0x2:
+                return Instruction.JSR;
+            case 0x3:
+                return Instruction.SKEQ;
+            case 0x4:
+                return Instruction.SKNE;
+            case 0x5:
+                return Instruction.SKEQ;
+            case 0x6:
+                return Instruction.MOV;
+            case 0x7:
+                return Instruction.ADD;
+            case 0x8:
+                switch (this.bytes.lsb) {
+                    case 0x0:
+                        return Instruction.MOV;
+                    case 0x1:
+                        return Instruction.OR;
+                    case 0x2:
+                        return Instruction.AND;
+                    case 0x3:
+                        return Instruction.XOR;
+                    case 0x4:
+                        return Instruction.ADD;
+                    case 0x5:
+                        return Instruction.SUB;
+                    case 0x6:
+                        return Instruction.SHR;
+                    case 0x7:
+                        return Instruction.RSB;
+                    case 0xE:
+                        return Instruction.SHL;
+                }
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            case 0x9:
+                return Instruction.SKNE;
+            case 0xA:
+                return Instruction.MVI;
+            case 0xB:
+                return Instruction.JMI;
+            case 0xC:
+                return Instruction.RAND;
+            case 0xD:
+                return Instruction.DRAW;
+            case 0xE:
+                switch (this.bytes.kk) {
+                    case 0x9E:
+                        return Instruction.SKPR;
+                    case 0xA1:
+                        return Instruction.SKUP;
+                }
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            case 0xF:
+                switch (this.bytes.kk) {
+                    case 0x07:
+                        return Instruction.GDEL;
+                    case 0x0A:
+                        return Instruction.KEY;
+                    case 0x15:
+                        return Instruction.SDEL;
+                    case 0x18:
+                        return Instruction.SSND;
+                    case 0x1E:
+                        return Instruction.ADI;
+                    case 0x29:
+                        return Instruction.FONT;
+                    case 0x33:
+                        return Instruction.BCD;
+                    case 0x55:
+                        return Instruction.STR;
+                    case 0x65:
+                        return Instruction.LDR;
+                }
+<span class="cstat-no" title="statement not covered" >                break;</span>
+        }
+&nbsp;
+        throw new TypeError(`Opcode has no valid instruction: ${this.rawOpcode}`);
+    }
+&nbsp;
+    private getArgs(): Array&lt;Token&gt; {
+        switch (this.instruction.value) {
+            case Instruction.CLS:
+            case Instruction.RET:
+                return [];
+            case Instruction.JMP:
+            case Instruction.JSR:
+                return this.getArgs_NNN(true);
+            case Instruction.MVI:
+            case Instruction.JMI:
+                return this.getArgs_NNN(false);
+            case Instruction.SKEQ:
+            case Instruction.SKNE:
+            case Instruction.MOV:
+            case Instruction.RAND:
+            case Instruction.OR:
+            case Instruction.AND:
+            case Instruction.XOR:
+            case Instruction.ADD:
+            case Instruction.SUB:
+            case Instruction.RSB:
+                if (
+                    [0x3, 0x4, 0x6, 0xC, 0x7].includes(this.bytes.msb)
+                ) {
+                    return this.getArgs_XNN();
+                } else <span class="missing-if-branch" title="else path not taken" >E</span>if (
+                    [0x5, 0x9, 0x8].includes(this.bytes.msb)
+                ) {
+                    return this.getArgs_XY()
+                }
+<span class="cstat-no" title="statement not covered" >                break;</span>
+            case Instruction.SHR:
+            case Instruction.SHL:
+            case Instruction.SKPR:
+            case Instruction.SKUP:
+            case Instruction.GDEL:
+            case Instruction.KEY:
+            case Instruction.SDEL:
+            case Instruction.SSND:
+            case Instruction.ADI:
+            case Instruction.FONT:
+            case Instruction.BCD:
+            case Instruction.STR:
+            case Instruction.LDR:
+                return this.getArgs_X();
+            case Instruction.DRAW:
+                return this.getArgs_XYZ();
+        }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        throw new TypeError(`Opcode has no valid args: ${this.rawOpcode}`);</span>
+    }
+&nbsp;
+    private getArgs_XYZ(): Array&lt;Token&gt; {
+        return [
+            new Token(TokenType.INTEGER, this.bytes.x),
+            new Token(TokenType.INTEGER, this.bytes.y),
+            new Token(TokenType.INTEGER, this.bytes.lsb),
+        ];
+    }
+&nbsp;
+    private getArgs_NNN(isLabel : boolean): Array&lt;Token&gt; {
+        if (isLabel)
+            this.label = new Token(TokenType.LABEL, `label-${toOpcodeString(this.bytes.nnn)}`);
+&nbsp;
+        return [
+            new Token(TokenType.INTEGER, this.bytes.nnn)
+        ];
+    }
+&nbsp;
+    private getArgs_XNN(): Array&lt;Token&gt; {
+        return [
+            new Token(TokenType.REGISTER, this.bytes.x),
+            new Token(TokenType.INTEGER, this.bytes.kk)
+        ];
+    }
+&nbsp;
+    private getArgs_XY(): Array&lt;Token&gt; {
+        return [
+            new Token(TokenType.REGISTER, this.bytes.x),
+            new Token(TokenType.REGISTER, this.bytes.y)
+        ];
+    }
+&nbsp;
+    private getArgs_X(): Array&lt;Token&gt; {
+        return [
+            new Token(TokenType.REGISTER, this.bytes.x)
+        ];
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Dec 23 2018 09:08:51 GMT-0800 (PST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

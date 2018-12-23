@@ -1,0 +1,27 @@
+{
+  "name": "low-level",
+  "version": "1.0.0",
+  "description": "Getting low level with js",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage",
+    "REPL": "ts-node src/cli"
+  },
+  "keywords": [
+    "lets",
+    "do",
+    "a",
+    "javascript"
+  ],
+  "author": "Dave Campion",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.18",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.12.0"
+  },
+  "dependencies": {}
+}
