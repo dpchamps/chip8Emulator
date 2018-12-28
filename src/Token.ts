@@ -30,8 +30,9 @@ export class Token {
                 return `${toHexString(Number(this.value))}h`;
             case TokenType.LABEL:
                 return `:${this.value}`;
-            case TokenType.INSTRUCTION:
             case TokenType.VOID:
+                return '';
+            case TokenType.INSTRUCTION:
             default:
                 return `${this.value}`;
         }

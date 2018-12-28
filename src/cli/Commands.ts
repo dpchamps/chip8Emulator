@@ -1,4 +1,7 @@
 export const enum commands {
     OPCODE = 'OPCODE',
-    EXIT = 'EXIT'
+    EXIT = 'EXIT',
+    DISASSEMBLE = 'DISASSEMBLE',
+    WALK = 'WALK',
+    SCAN = 'SCAN'
 }

@@ -4,6 +4,7 @@ export const enum TokenType {
     INTEGER = 'INTEGER',
     LABEL = 'LABEL',
     VOID = 'VOID',
+    DATA = 'DATA',
     COMMENT = 'COMMENT',
     EOF = 'EOF'
 }

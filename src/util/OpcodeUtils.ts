@@ -26,3 +26,16 @@ export const toOpcodeString = (n: number): string => {
     return `0x${toHexString(n).padStart(4, '0')}`;
 };
 
+export const getOpcodesFromBuffer = (buffer: Buffer | Uint8Array): Uint16Array => {
+    const _tempBuffer = [];
+    //pad the buffer so that an uneven buffer will have the correct final opcode
+    const bufferLength = buffer.length % 2 === 0 ? buffer.length : buffer.length + 1;
+    for (let i = 0; i < buffer.length; i += 2) {
+        const HIGH = buffer[i] << 8;
+        const LOW = buffer[i + 1] || 0;
+
+        _tempBuffer.push(HIGH | LOW);
+    }
+
+    return new Uint16Array(_tempBuffer);
+};

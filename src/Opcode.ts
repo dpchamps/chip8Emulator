@@ -10,25 +10,35 @@ export class Opcode {
     instruction: Token;
     args: Array<Token>;
     label?: Token;
+    comments: Map<string, string>;
+    strict: boolean;
 
     static INSTRUCTION_PADDING: number = 6;
     static ARGUMENTS_PADDING: number = 20;
 
-    constructor(opcode: number) {
+    constructor(opcode: number, strict: boolean = true) {
+        this.strict = strict;
         this.rawOpcode = opcode;
         this.bytes = parseOpcode(opcode);
-        this.instruction = new Token(TokenType.INSTRUCTION, this.getInstruction());
+        this.comments = new Map();
+
+        this.instruction = new Token(TokenType.INSTRUCTION, this.getInstructionToken());
         this.args = this.getArgs();
     }
 
     toString(): string {
         const instruction = this.instruction.toString().padEnd(Opcode.INSTRUCTION_PADDING, ' ');
+        const comments = Array.from(this.comments).reduce((str, [key, val]) => `${str}; ${key} : ${val}`, '');
         const args = this.args.map(token => token.toString()).join(', ').padEnd(Opcode.ARGUMENTS_PADDING, ' ');
 
-        return `${instruction}${args}`;
+        if (this.label) {
+            return `${instruction}${this.label.toString().padEnd(Opcode.ARGUMENTS_PADDING, ' ')}${comments}`;
+        }
+
+        return `${instruction}${args}${comments}`;
     }
 
-    private getInstruction(): Instruction {
+    private getInstructionToken(): Instruction {
         switch (this.bytes.msb) {
             case 0x0:
                 switch (this.bytes.kk) {
@@ -116,7 +126,11 @@ export class Opcode {
                 break;
         }
 
-        throw new TypeError(`Opcode has no valid instruction: ${this.rawOpcode}`);
+        if (this.strict) {
+            throw new TypeError(`Opcode has no valid instruction: ${this.rawOpcode}`);
+        } else {
+            return Instruction.NOOP;
+        }
     }
 
     private getArgs(): Array<Token> {
@@ -166,6 +180,8 @@ export class Opcode {
                 return this.getArgs_X();
             case Instruction.DRAW:
                 return this.getArgs_XYZ();
+            default:
+                return [new Token(TokenType.VOID, null)];
         }
 
         throw new TypeError(`Opcode has no valid args: ${this.rawOpcode}`);
@@ -179,7 +195,7 @@ export class Opcode {
         ];
     }
 
-    private getArgs_NNN(isLabel : boolean): Array<Token> {
+    private getArgs_NNN(isLabel: boolean): Array<Token> {
         if (isLabel)
             this.label = new Token(TokenType.LABEL, `label-${toOpcodeString(this.bytes.nnn)}`);
 

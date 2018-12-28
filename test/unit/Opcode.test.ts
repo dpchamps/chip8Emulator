@@ -1,5 +1,7 @@
 import {Opcode} from "../../src/Opcode";
 import {Instruction} from "../../src/types/Instruction";
+import {TokenType} from "../../src/types/TokenType";
+import {Token} from "../../src/Token";
 
 describe('Opcode', () => {
     test('Should instantiate', () => {
@@ -322,12 +324,26 @@ describe('Opcode', () => {
         expect(x.value).toBe(0xB);
     });
 
-    it('Should throw an error upon receiving an invalid opcode', () => {
+    it('Should throw an error upon receiving an invalid opcode in strict mode', () => {
         const shouldThrow = () => {
             new Opcode(0x0000);
         };
 
         expect(shouldThrow).toThrow(TypeError);
+    });
+
+    it('Should not throw an error upon receiving an invalid opcode in non-strict mode', () => {
+        const shouldNotThrow = () => {
+            new Opcode(0x0000, false);
+        };
+
+        expect(shouldNotThrow).not.toThrow();
+    });
+
+    it('Should parse an unknown opcode as NOOP in non-strict mode', () => {
+        const opcode = new Opcode(0x0000, false);
+
+        expect(opcode.instruction.value).toBe(Instruction.NOOP);
     });
 
     it('Should format output', () => {
@@ -341,6 +357,22 @@ describe('Opcode', () => {
 
         expect(draw.toString()).toBe(`${expectedDrawInstruction.padEnd(Opcode.INSTRUCTION_PADDING, ' ')}${expectedDrawArguments.padEnd(Opcode.ARGUMENTS_PADDING, ' ')}`)
         expect(cls.toString()).toBe(`${expectedClsInstruction.padEnd(Opcode.INSTRUCTION_PADDING, ' ')}${expectedClsArguments.padEnd(Opcode.ARGUMENTS_PADDING, ' ')}`)
+    });
 
+    it('Should format output with comments', () => {
+        const cls = new Opcode(0x00e0);
+        cls.comments.set('hello', 'world');
+        cls.comments.set('im', 'cool');
+
+        expect(cls.toString()).toBe(`${Instruction.CLS.padEnd(Opcode.INSTRUCTION_PADDING, ' ')}${''.padEnd(Opcode.ARGUMENTS_PADDING, ' ')}; hello : world; im : cool`);
+    });
+
+    it('Should format output with label instead of args if present', () => {
+       const jmp = new Opcode(0x1234);
+       jmp.label = new Token(TokenType.LABEL, 'cool-breans');
+
+       expect(jmp.toString()).toBe(
+           `${Instruction.JMP.padEnd(Opcode.INSTRUCTION_PADDING, ' ')}${':cool-breans'.padEnd(Opcode.ARGUMENTS_PADDING, ' ')}`
+       )
     });
 });
