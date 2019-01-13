@@ -5,8 +5,10 @@ import {Instruction} from "./types/Instruction";
 import {DisassemblerError} from "./errors/Chip8Errors";
 import {toHexString, toOpcodeString} from "./util/OpcodeUtils";
 import {DataCode} from "./DataCode";
+import {add} from "./emulator/opcodes/math";
 
 export class Disassembler {
+    static MAX_BRANCHES = STACK_LENGTH * 3;
     buffer: Array<number>;
     stack: Array<number>;
     reachableAddresses: Map<number, Opcode>;
@@ -44,17 +46,21 @@ export class Disassembler {
     }
 
     private walkBranch(address: number): void {
-        while (address < this.buffer.length+PROGRAM_OFFSET-1 && !this.reachableAddresses.has(address)) {
+        while (address < this.buffer.length + PROGRAM_OFFSET - 1 && !this.reachableAddresses.has(address)) {
             const opcode = this.getOpcodeFromOffsetAddress(address);
             const lastAddress = address;
 
             this.reachableAddresses.set(address, opcode);
 
+            if (opcode.instruction.equals(Instruction.RET)) {
+                break;
+            }
+
             address = this.getNextAddress(address, opcode);
 
             if (address >= MEMORY_LENGTH)
                 throw new DisassemblerError(lastAddress, opcode.rawOpcode, `Program exceeds max address space, ${toHexString(address)}`);
-            if (this.stack.length >= STACK_LENGTH)
+            if (this.stack.length > Disassembler.MAX_BRANCHES)
                 throw new DisassemblerError(lastAddress, opcode.rawOpcode, `Program exceeds the max stack length`);
         }
     }
@@ -117,7 +123,6 @@ export class Disassembler {
         if (this.addComments) {
             opcode.comments.set('addr', toHexString(address));
             opcode.comments.set('opcode', toOpcodeString(opcode.rawOpcode));
-
         }
 
         return opcode

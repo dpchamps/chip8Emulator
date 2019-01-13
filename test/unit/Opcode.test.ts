@@ -349,7 +349,7 @@ describe('Opcode', () => {
     it('Should format output', () => {
         const draw = new Opcode(0xDABC);
         const expectedDrawInstruction = Instruction.DRAW;
-        const expectedDrawArguments = 'Ah, Bh, Ch';
+        const expectedDrawArguments = '$A, $B, Ch';
 
         const cls = new Opcode(0x00E0);
         const expectedClsInstruction = Instruction.CLS;

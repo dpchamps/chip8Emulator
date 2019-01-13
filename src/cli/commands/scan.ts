@@ -1,6 +1,6 @@
 import {Opcode} from "../../Opcode";
 import {loadFile} from "../modules/loadFile";
-import {toOpcodeString, getOpcodesFromBuffer, toHexString} from "../../util/OpcodeUtils";
+import {toOpcodeString, getOpcodesFromBuffer, toHexString, toBinString} from "../../util/OpcodeUtils";
 import {PROGRAM_OFFSET} from "../../types/Chip8Specs";
 
 const usage = `SCAN filename [offsetIdx] [stopIdx]
@@ -21,6 +21,6 @@ export const scan = async (args: Array<string>): Promise<string> => {
     return opcodeArray.reduce((str, rawOpcode, idx) => {
         const opcode = new Opcode(rawOpcode, false);
 
-        return `${str} ${opcode.toString()} - ${toOpcodeString(rawOpcode)} ADDR: ${toHexString((offsetIdx+(idx*2)) + PROGRAM_OFFSET)}\n`;
+        return `${str} ADDR: ${toHexString((offsetIdx + (idx * 2)) + PROGRAM_OFFSET)}  ${opcode.toString()} - ${toOpcodeString(rawOpcode)} ${toBinString(rawOpcode, 16)} \n`;
     }, '');
 };

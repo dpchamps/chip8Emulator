@@ -4,6 +4,8 @@
   "description": "Getting low level with js",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --mode development",
+    "start": "http-server",
     "test": "jest --coverage",
     "REPL": "ts-node src/cli"
   },
@@ -18,10 +20,17 @@
   "devDependencies": {
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.18",
+    "http-server": "^0.11.1",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.5",
+    "ts-loader": "^5.3.2",
     "ts-node": "^7.0.1",
-    "tslint": "^5.12.0"
+    "tslint": "^5.12.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.1.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "htm": "^2.0.0",
+    "preact": "^8.4.2"
+  }
 }

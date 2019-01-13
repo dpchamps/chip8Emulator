@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            font-family: monospace;
+        }
+        canvas{
+            background-color: rgba(76, 8, 35, 0.66);
+        }
+        #chip8{
+            display: flex;
+        }
+
+        #internals{
+            display: flex;
+        }
+        .col2{
+            margin: 0 3em;
+        }
+
+        .memory {
+            max-width: 32ch;
+            display: block;
+            max-height: 50ch;
+            overflow: scroll;
+            margin-left: 3em;
+        }
+
+        .memory span {
+            display: inline-block;
+            margin: 0 2px;
+        }
+
+        .memory .idx-register {
+            background: #00ffa1;
+        }
+
+        .memory .pgrm-counter{
+            background: #f1ff03;
+        }
+        .col2 table{
+            text-align: left;
+        }
+        #disassembly{
+            max-height: 225px;
+            width: 448px;
+            overflow: hidden;
+
+        }
+
+        pre.highlight{
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+</body>
+<script src="dist/bundle.js"></script>
+</html>

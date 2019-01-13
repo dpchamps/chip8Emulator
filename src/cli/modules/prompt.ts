@@ -1,17 +1,12 @@
-import readline from 'readline';
-
-const readInterface = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
+import {readInterface} from "./readInterface";
 
 /**
  * Prompt a user for input, resolve the input
  */
-export default () :Promise<string> => {
+export default (prompt : string = '>'): Promise<string> => {
     return new Promise((res, rej) => {
         try {
-            readInterface.question(">", answer => {
+            readInterface.question(prompt, answer => {
                 res(answer)
             })
         } catch (error) {

@@ -1,4 +1,5 @@
 import {toHexString, toOpcodeString} from "../util/OpcodeUtils";
+import {Opcode} from "../Opcode";
 
 class Chip8Error extends Error {
     constructor(message: string, ...args: any) {
@@ -23,5 +24,35 @@ export class DisassemblerError extends Chip8Error {
 
     toString(): string {
         return `Couldn't disassemble opcode ${toOpcodeString(this.opcode)} from address ${toHexString(this.address)}, ${this.message}`;
+    }
+}
+
+export class StackOverflowError extends Chip8Error {
+    programCounter: number;
+    opcode: Opcode;
+
+    constructor(programCounter: number, opcode: Opcode, message?: string) {
+        super(message || '');
+        this.programCounter = programCounter;
+        this.opcode = opcode;
+    }
+
+    toString() {
+        return `The program caused a stack overflow at address ${toHexString(this.programCounter)} from opcode ${this.opcode}`;
+    }
+}
+
+export class IllegalMemorySpace extends Chip8Error{
+    programCounter: number;
+    opcode: Opcode;
+
+    constructor(programCounter: number, opcode: Opcode, message?: string) {
+        super(message || '');
+        this.programCounter = programCounter;
+        this.opcode = opcode;
+    }
+
+    toString() {
+        return `The program accessed illegal memory space ${toHexString(this.programCounter)} from opcode ${this.opcode}`;
     }
 }

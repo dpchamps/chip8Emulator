@@ -175,9 +175,10 @@ export class Opcode {
             case Instruction.ADI:
             case Instruction.FONT:
             case Instruction.BCD:
+                return this.getArgs_XREG();
             case Instruction.STR:
             case Instruction.LDR:
-                return this.getArgs_X();
+                return this.getArgs_XINT();
             case Instruction.DRAW:
                 return this.getArgs_XYZ();
             default:
@@ -189,8 +190,8 @@ export class Opcode {
 
     private getArgs_XYZ(): Array<Token> {
         return [
-            new Token(TokenType.INTEGER, this.bytes.x),
-            new Token(TokenType.INTEGER, this.bytes.y),
+            new Token(TokenType.REGISTER, this.bytes.x),
+            new Token(TokenType.REGISTER, this.bytes.y),
             new Token(TokenType.INTEGER, this.bytes.lsb),
         ];
     }
@@ -218,9 +219,16 @@ export class Opcode {
         ];
     }
 
-    private getArgs_X(): Array<Token> {
+    private getArgs_XREG(): Array<Token> {
         return [
             new Token(TokenType.REGISTER, this.bytes.x)
         ];
     }
+
+    private getArgs_XINT(): Array<Token> {
+        return [
+            new Token(TokenType.INTEGER, this.bytes.x)
+        ];
+    }
+
 }

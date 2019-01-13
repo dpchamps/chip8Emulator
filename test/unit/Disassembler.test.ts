@@ -17,7 +17,7 @@ const toByteStream = (opcodes: Array<number>): Uint8Array => {
 };
 
 describe('Disassembler', () => {
-    it('Shoud produce a disassembled program', () => {
+    it('Should produce a disassembled program', () => {
         const opcodes = [
             0x8180,
             0x8280,
@@ -182,17 +182,17 @@ describe('Disassembler', () => {
             new Disassembler(toByteStream([...opcodes, ...filler]))
         };
 
-        expect(willThrow).toThrow(DisassemblerError);
+        expect(willThrow).toThrow();
     });
 
     it('Should throw an error when a program exceeds the max stack size of the chip8', () => {
-        const opcodes = new Array(STACK_LENGTH*2);
+        const opcodes = new Array(Disassembler.MAX_BRANCHES * 4);
         opcodes.fill(0x3000);
 
         const willThrow = () => {
             new Disassembler(toByteStream(opcodes));
         };
 
-        expect(willThrow).toThrow(DisassemblerError);
+        expect(willThrow).toThrow();
     })
 });

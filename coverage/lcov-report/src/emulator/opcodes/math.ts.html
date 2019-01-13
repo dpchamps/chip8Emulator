@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/emulator/opcodes/math.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">All files</a> / <a href="index.html">src/emulator/opcodes</a> math.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>52/52</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>4/4</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>11/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>52/52</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {Chip8} from "../Chip8";
+import {IOpcode} from "../../interfaces/IOpcode";
+&nbsp;
+/**
+ * Provides definitions for opcodes that preform math and bitwise operations.
+ */
+&nbsp;
+/**
+ * Bitwise OR,
+ *
+ * Store the result of Register X | Register Y into Register X
+ */
+export const or: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+    const registerY = this.registers[this.currentOpcode.bytes.y];
+&nbsp;
+    this.registers[this.currentOpcode.bytes.x] = registerX | registerY;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Bitwise AND,
+ *
+ * Store the result of Register X &amp; Register Y into Register X
+ */
+export const and: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+    const registerY = this.registers[this.currentOpcode.bytes.y];
+&nbsp;
+    this.registers[this.currentOpcode.bytes.x] = registerX &amp; registerY;
+    this.advance();
+};
+&nbsp;
+/**
+ * Bitwise XOR
+ *
+ * Store the result of Register X ^ Register Y into Register X
+ */
+export const xor: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+    const registerY = this.registers[this.currentOpcode.bytes.y];
+&nbsp;
+    this.registers[this.currentOpcode.bytes.x] = registerX ^ registerY;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Addition
+ *
+ * Store the result of register X + Register Y into Register X
+ * Set register 0xF to 1 if there's a carry, 0 if no carry occurs
+ */
+export const add: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+    const registerY = this.registers[this.currentOpcode.bytes.y];
+&nbsp;
+    this.registers[0xF] = Number(registerX &gt; (0xFF - registerY));
+    this.registers[this.currentOpcode.bytes.x] = registerX + registerY;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Subtraction
+ *
+ * Store the result of register X - Register Y into register X
+ * Set Register 0xF to 1 if there's a borrow, 0 if no borrow occurs
+ */
+export const subtract: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+    const registerY = this.registers[this.currentOpcode.bytes.y];
+&nbsp;
+    this.registers[0xF] = Number(registerY &lt; registerX);
+    this.registers[this.currentOpcode.bytes.x] = registerX - registerY;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Shift right
+ *
+ * Shift register x to the right by one
+ * Store the LSB of register x into register 0xf prior to shift
+ */
+export const shiftRight: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+&nbsp;
+    this.registers[0xF] = registerX &amp; 0b1;
+    this.registers[this.currentOpcode.bytes.x] = registerX &gt;&gt; 1;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Subtract the value stored in register x from the value stored in register y
+ *
+ * Set the 0xF register to 1 when a borrow DOES NOT occur.
+ */
+export const invertedSubtract: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+    const registerY = this.registers[this.currentOpcode.bytes.y];
+&nbsp;
+    this.registers[0xF] = registerX &gt; registerY ? 1 : 0;
+    this.registers[this.currentOpcode.bytes.x] = registerY - registerX;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Shift left
+ *
+ * Shift register x to the left by one
+ * Store the MSB of register x into register 0xF prior to shift
+ */
+export const shiftLeft: IOpcode = function (this: Chip8) {
+    const registerX = this.registers[this.currentOpcode.bytes.x];
+&nbsp;
+    this.registers[0xF] = (registerX &amp; 0b10000000) ? 0b1 : 0b0;
+    this.registers[this.currentOpcode.bytes.x] = registerX &lt;&lt; 1;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Store the value of KK into register x
+ */
+export const setConstant: IOpcode = function (this: Chip8) {
+    this.registers[this.currentOpcode.bytes.x] = this.currentOpcode.bytes.kk;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Add the constant value of KK to  register x
+ */
+export const addConstant: IOpcode = function (this: Chip8) {
+    this.registers[this.currentOpcode.bytes.x] += this.currentOpcode.bytes.kk;
+&nbsp;
+    this.advance();
+};
+&nbsp;
+/**
+ * Set register x with the contents of register y
+ */
+export const setRegisterXWithY: IOpcode = function (this: Chip8) {
+    this.registers[this.currentOpcode.bytes.x] = this.registers[this.currentOpcode.bytes.y];
+&nbsp;
+    this.advance();
+};</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jan 05 2019 17:50:49 GMT-0800 (PST)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

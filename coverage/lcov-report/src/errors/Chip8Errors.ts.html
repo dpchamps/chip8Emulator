@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">77.78% </span>
+        <span class="strong">78.95% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/9</span>
+        <span class='fraction'>15/19</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>4/4</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>2/4</span>
+        <span class='fraction'>4/8</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">77.78% </span>
+        <span class="strong">78.95% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/9</span>
+        <span class='fraction'>15/19</span>
       </div>
     </div>
   </div>
@@ -69,10 +69,57 @@
 24
 25
 26
-27</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58</td><td class="line-coverage quiet"><span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -82,20 +129,36 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {toHexString, toOpcodeString} from "../util/OpcodeUtils";
+import {Opcode} from "../Opcode";
 &nbsp;
 class Chip8Error extends Error {
     constructor(message: string, ...args: any) {
@@ -121,13 +184,43 @@ export class DisassemblerError extends Chip8Error {
 <span class="fstat-no" title="function not covered" >    toString</span>(): string {
 <span class="cstat-no" title="statement not covered" >        return `Couldn't disassemble opcode ${toOpcodeString(this.opcode)} from address ${toHexString(this.address)}, ${this.message}`;</span>
     }
+}
+&nbsp;
+export class StackOverflowError extends Chip8Error {
+    programCounter: number;
+    opcode: Opcode;
+&nbsp;
+    constructor(programCounter: number, opcode: Opcode, message?: string) {
+        super(message || '');
+        this.programCounter = programCounter;
+        this.opcode = opcode;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    toString</span>() {
+<span class="cstat-no" title="statement not covered" >        return `The program caused a stack overflow at address ${toHexString(this.programCounter)} from opcode ${this.opcode}`;</span>
+    }
+}
+&nbsp;
+export class IllegalMemorySpace extends Chip8Error{
+    programCounter: number;
+    opcode: Opcode;
+&nbsp;
+    constructor(programCounter: number, opcode: Opcode, message?: string) {
+        super(message || '');
+        this.programCounter = programCounter;
+        this.opcode = opcode;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    toString</span>() {
+<span class="cstat-no" title="statement not covered" >        return `The program accessed illegal memory space ${toHexString(this.programCounter)} from opcode ${this.opcode}`;</span>
+    }
 }</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Dec 24 2018 13:29:08 GMT-0800 (PST)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sat Jan 05 2019 17:50:49 GMT-0800 (PST)
 </div>
 </div>
 <script src="../../prettify.js"></script>

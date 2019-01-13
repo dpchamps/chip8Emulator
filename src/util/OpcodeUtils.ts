@@ -18,8 +18,8 @@ export const toHexString = (n: number): string => {
 };
 
 //Return the binary representation of a number
-export const toBinString = (n: number): string => {
-    return n.toString(2);
+export const toBinString = (n: number, pad: number = 0): string => {
+    return n.toString(2).padStart(pad, '0');
 };
 
 export const toOpcodeString = (n: number): string => {

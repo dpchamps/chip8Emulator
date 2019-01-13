@@ -3,6 +3,8 @@ import {Opcode} from "../Opcode";
 import {commands} from "./Commands";
 import {scan} from "./commands/scan";
 import {disassemble} from "./commands/disassemble";
+import {executeTicks} from "./commands/executeTicks";
+import {outputBinary} from "./commands/outputBinary";
 
 const REPL = async () => {
     let isRunning = true;
@@ -25,12 +27,20 @@ const REPL = async () => {
                 case commands.DISASSEMBLE:
                     console.log(await disassemble(args));
                     break;
+                case commands.EXECUTE:
+                    console.log(await executeTicks(args));
+                    break;
+                case commands.BINARY:
+                    console.log(await outputBinary(args));
+                    break;
                 default:
                     console.log(`Available commands:
-                        ${commands.EXIT} - Exit the cli
-                        ${commands.OPCODE} - disassemble an opcode
-                        ${commands.DISASSEMBLE} - disassemble a program
-                        ${commands.SCAN} - scan a program, from offset
+                        ${commands.EXIT} - Exit the cli.
+                        ${commands.OPCODE} - disassemble an opcode.
+                        ${commands.DISASSEMBLE} - disassemble a program.
+                        ${commands.SCAN} - scan a program, from offset.
+                        ${commands.EXECUTE} - execute a program for n ticks at fps.
+                        ${commands.BINARY} - output a chip binary as a UInt8 Array
                     `);
 
             }

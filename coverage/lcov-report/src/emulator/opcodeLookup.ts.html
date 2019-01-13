@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/emulator/opcodeLookup.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">All files</a> / <a href="index.html">src/emulator</a> opcodeLookup.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.88% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>2/41</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">2.63% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/38</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4.88% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>2/41</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {Chip8} from "./Chip8";
+&nbsp;
+/**
+ * Provides a 1:1 mapping between opcode and opcode function.
+ */
+export const opcodeLookup = function (this: Chip8) {
+    return {
+        0x0000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodeLookup[this.currentOpcode.bytes.kk]();</span>
+        },
+        0x00E0: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.clearScreen();</span>
+        },
+        0x00EE: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.returnFromSubroutine();</span>
+        },
+        0x1000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.jumpToAddress();</span>
+        },
+        0x2000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.jumpToSubroutine();</span>
+        },
+        0x3000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.skeqXKK();</span>
+        },
+        0x4000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.skneXKK();</span>
+        },
+        0x5000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.skeqXY();</span>
+        },
+        0x6000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.setConstant();</span>
+        },
+        0x7000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.addConstant();</span>
+        },
+        0x8000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            if (this.currentOpcode.bytes.lsb) {</span>
+<span class="cstat-no" title="statement not covered" >                this.opcodeLookup[this.currentOpcode.rawOpcode * 0xF00F]();</span>
+            } else {
+<span class="cstat-no" title="statement not covered" >                this.opcodes.setRegisterXWithY();</span>
+            }
+        },
+        0x8001: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.or();</span>
+        },
+        0x8002: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.and();</span>
+        },
+        0x8003: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.xor();</span>
+        },
+        0x8004: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.add();</span>
+        },
+        0x8005: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.subtract();</span>
+        },
+        0x8006: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.shiftRight();</span>
+        },
+        0x8007: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.invertedSubtract();</span>
+        },
+        0x800E: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.shiftLeft();</span>
+        },
+        0x9000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.skneXY();</span>
+        },
+        0xA000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.mvi();</span>
+        },
+        0xB000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.jumpToAddressPlusRegister();</span>
+        },
+        0xC000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.rand();</span>
+        },
+        0xD000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.draw();</span>
+        },
+        0xE000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodeLookup[this.currentOpcode.rawOpcode &amp; 0xF0FF]();</span>
+        },
+        0xE09E: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.skpr();</span>
+        },
+        0xE0A1: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.skup();</span>
+        },
+        0xF000: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodeLookup[this.currentOpcode.rawOpcode &amp; 0xF0FF]();</span>
+        },
+        0xF007: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.gDelay();</span>
+        },
+        0xF00A: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.key();</span>
+        },
+        0xF015: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.sDelay();</span>
+        },
+        0xF018: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.sSound();</span>
+        },
+        0xF01E: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.adi();</span>
+        },
+        0xF029: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.font();</span>
+        },
+        0xF033: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.binaryCodedDecimal();</span>
+        },
+        0xF055: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.str();</span>
+        },
+        0xF065: <span class="fstat-no" title="function not covered" >() </span>=&gt; {
+<span class="cstat-no" title="statement not covered" >            this.opcodes.ldr();</span>
+        }
+    }
+};</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Dec 26 2018 18:05:59 GMT-0800 (PST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
