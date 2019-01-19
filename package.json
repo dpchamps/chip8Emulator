@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "htm": "^2.0.0",
-    "preact": "^8.4.2"
+    "preact": "^8.4.2",
+    "typescript": "^3.2.4"
   }
 }

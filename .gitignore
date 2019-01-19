@@ -1,2 +1,20 @@
 dist
 node_modules
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+### OSX ###
+.DS_Store
+
+node_modules
+*.log
