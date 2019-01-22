@@ -5,6 +5,7 @@ import {scan} from "./commands/scan";
 import {disassemble} from "./commands/disassemble";
 import {executeTicks} from "./commands/executeTicks";
 import {outputBinary} from "./commands/outputBinary";
+import {assemble} from "./commands/assemble";
 
 const REPL = async () => {
     let isRunning = true;
@@ -33,6 +34,9 @@ const REPL = async () => {
                 case commands.BINARY:
                     console.log(await outputBinary(args));
                     break;
+                case commands.ASSEMBLE:
+                    console.log(await assemble(args));
+                    break;
                 default:
                     console.log(`Available commands:
                         ${commands.EXIT} - Exit the cli.
@@ -40,7 +44,8 @@ const REPL = async () => {
                         ${commands.DISASSEMBLE} - disassemble a program.
                         ${commands.SCAN} - scan a program, from offset.
                         ${commands.EXECUTE} - execute a program for n ticks at fps.
-                        ${commands.BINARY} - output a chip binary as a UInt8 Array
+                        ${commands.BINARY} - output a chip binary as a UInt8 Array.
+                        ${commands.ASSEMBLE} - assemble a program.
                     `);
 
             }

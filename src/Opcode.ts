@@ -1,11 +1,11 @@
-import {OpcodeBytes} from "./interfaces/OpcodeBytes";
+import {IOpcodeBytes} from "./interfaces/IOpcodeBytes";
 import {parseOpcode, toOpcodeString} from "./util/OpcodeUtils";
 import {Instruction} from "./types/Instruction";
 import {Token} from "./Token";
 import {TokenType} from "./types/TokenType";
 
 export class Opcode {
-    bytes: OpcodeBytes;
+    bytes: IOpcodeBytes;
     rawOpcode: number;
     instruction: Token;
     args: Array<Token>;
@@ -182,7 +182,7 @@ export class Opcode {
             case Instruction.DRAW:
                 return this.getArgs_XYZ();
             default:
-                return [new Token(TokenType.VOID, null)];
+                return [new Token(TokenType.DATA, this.rawOpcode)];
         }
 
         throw new TypeError(`Opcode has no valid args: ${this.rawOpcode}`);

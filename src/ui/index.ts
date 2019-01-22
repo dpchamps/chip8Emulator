@@ -25,7 +25,7 @@ export default class App extends Component<IAppProps, any> {
     readonly state: IAppState = {
         program: new Uint8Array([]),
         currentInstruction: PROGRAM_OFFSET,
-        isStep: false,
+        isStep: true,
         canStep: true
     };
 
@@ -36,7 +36,7 @@ export default class App extends Component<IAppProps, any> {
         super(props);
         this.animationFrame = null;
 
-        this.load();
+        this.load().then(() => this.start());
         this.start();
     }
 
@@ -47,9 +47,11 @@ export default class App extends Component<IAppProps, any> {
         document.body.addEventListener('keydown', this.onKeyDown.bind(this));
     }
 
-    load() {
-        chip8.load(invaders);
-        this.setState({program: invaders});
+    async load() {
+        const file = await loadFile(this.props.program);
+        console.log(file);
+        chip8.load(file);
+        this.setState({program: file});
     }
 
     start() {

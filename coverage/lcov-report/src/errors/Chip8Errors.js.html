@@ -260,7 +260,7 @@ var IllegalMemorySpace = /** @class */ (function (_super) {
 <span class="cstat-no" title="statement not covered" >        return _this;</span>
     }
     IllegalMemorySpace.prototype.toString = <span class="fstat-no" title="function not covered" >fu</span>nction () {
-<span class="cstat-no" title="statement not covered" >        return "The program accessed illegal memory space " + OpcodeUtils_1.toHexString(this.programCounter) + " from opcode " + this.opcode;</span>
+<span class="cstat-no" title="statement not covered" >        return "The program accessed illegal instructions space " + OpcodeUtils_1.toHexString(this.programCounter) + " from opcode " + this.opcode;</span>
     };
     return IllegalMemorySpace;
 }(Chip8Error));

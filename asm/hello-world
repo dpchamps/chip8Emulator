@@ -1,0 +1,84 @@
+;Writes Hello World to the screen
+:draw-loop
+MOV $2, 8h
+MOV $3, 5h
+MVI 300h
+JSR :draw-next
+
+MVI 306h
+JSR :draw-next
+
+MVI 30Ch
+JSR :draw-next
+JSR :draw-next
+
+FONT 0
+JSR :draw-next
+
+ADD $1 3h
+MVI 311h
+JSR :draw-next
+MOV $3, 4h
+MVI 317h
+JSR :draw-next
+MOV $3, 5h
+
+FONT 0
+JSR :draw-next
+
+MVI 31dh
+JSR :draw-next
+
+MVI 30Ch
+JSR :draw-next
+
+FONT Dh
+JSR :draw-next
+
+ADD $4, 1h
+MOV $1, $4
+CLS
+JMP :draw-loop
+
+;Increment x register and draw next sprite
+:draw-next
+ADD $1, $3
+DRAW $1, $2, 5h
+RET
+
+RET
+:endloop
+JMP :endloop
+
+;Letters
+DATA 300h, 10010000n ; H
+           10010000n
+           11110000n
+           10010000n
+           10010000n
+DATA 306h, 11110000n ; E
+           11000000n
+           11110000n
+           11000000n
+           11110000n
+DATA 30Ch, 10000000n ; L
+           10000000n
+           10000000n
+           10000000n
+           11110000n
+DATA 311h, 10000000n ; W first half
+           10000000n
+           11000000n
+           11010000n
+           11110000n
+DATA 317h, 00010000n ; W second half
+           00010000n
+           00110000n
+           10110000n
+           11110000n
+
+DATA 31Dh, 11110000n
+           10010000n
+           11110000n
+           10110000n
+           10110000n

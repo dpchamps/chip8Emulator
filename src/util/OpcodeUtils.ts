@@ -1,7 +1,7 @@
-import {OpcodeBytes} from "../interfaces/OpcodeBytes";
+import {IOpcodeBytes} from "../interfaces/IOpcodeBytes";
 
 
-export const parseOpcode = (opcode: number): OpcodeBytes => {
+export const parseOpcode = (opcode: number): IOpcodeBytes => {
     return {
         msb: (opcode & 0xF000) >> 12,
         lsb: (opcode & 0x000F),
@@ -38,4 +38,10 @@ export const getOpcodesFromBuffer = (buffer: Buffer | Uint8Array): Uint16Array =
     }
 
     return new Uint16Array(_tempBuffer);
+};
+
+export const bytecodeArrayToString = (array: Uint8Array) => {
+    return '' + array.reduce((str, byte, idx) => {
+        return `${str}${idx !== 0 && idx % 16 === 0 ? '\n' : ''}${idx !== 0 && idx % 8 === 0 && idx % 16 !== 0 ? '  ' : ' '}${toHexString(byte).padStart(2, '0')}`;
+    }, '') + '';
 };

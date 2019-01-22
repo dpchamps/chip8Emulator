@@ -8,7 +8,7 @@
  * kk  : 33
  * nnn : 133
  */
-export interface OpcodeBytes {
+export interface IOpcodeBytes {
     msb: number,
     lsb: number,
     x: number,

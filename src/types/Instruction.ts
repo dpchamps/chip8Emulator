@@ -1,4 +1,4 @@
-export const enum Instruction {
+export enum Instruction {
     CLS = 'CLS',  //Clear the screen
     RET = 'RET',  //Return from subroutine
     JMP = 'JMP',  //Jump to address XXX

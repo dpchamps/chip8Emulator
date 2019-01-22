@@ -1,0 +1,23 @@
+:label-0x0200
+MVI   21Eh                ; addr : 200; opcode : 0xA21E
+RAND  $2, 1h              ; addr : 202; opcode : 0xC201
+SKEQ  $2, 1h              ; addr : 204; opcode : 0x3201
+MVI   21Ah                ; addr : 206; opcode : 0xA21A
+DRAW  $0, $1, 4h          ; addr : 208; opcode : 0xD014
+ADD   $0, 4h              ; addr : 20A; opcode : 0x7004
+SKEQ  $0, 40h             ; addr : 20C; opcode : 0x3040
+JMP   :label-0x0200       ; addr : 20E; opcode : 0x1200
+MOV   $0, 0h              ; addr : 210; opcode : 0x6000
+ADD   $1, 4h              ; addr : 212; opcode : 0x7104
+SKEQ  $1, 20h             ; addr : 214; opcode : 0x3120
+JMP   :label-0x0200       ; addr : 216; opcode : 0x1200
+:label-0x0218
+JMP   :label-0x0218       ; addr : 218; opcode : 0x1218
+DATA	21Ah, 80h
+DATA	21Bh, 40h
+DATA	21Ch, 20h
+DATA	21Dh, 10h
+DATA	21Eh, 20h
+DATA	21Fh, 40h
+DATA	220h, 80h
+DATA	221h, 10h

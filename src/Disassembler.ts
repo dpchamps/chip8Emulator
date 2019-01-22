@@ -113,7 +113,7 @@ export class Disassembler {
         return [...program, ...data];
     }
 
-    private getOpcodeFromOffsetAddress(address: number) {
+    private getOpcodeFromOffsetAddress(address: number): Opcode {
         const localAddress = address - PROGRAM_OFFSET;
         const HIGH = this.buffer[localAddress] << 8;
         const LOW = this.buffer[localAddress + 1] || 0;

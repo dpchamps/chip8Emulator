@@ -2,12 +2,16 @@ import {TokenType} from "./types/TokenType";
 import {toHexString} from './util/OpcodeUtils';
 
 export class Token {
+    lineNumber: number | undefined;
+    colNumber: number | undefined;
     type: TokenType;
     value: any;
 
-    constructor(type: TokenType, value: any) {
+    constructor(type: TokenType, value: any, lineNumber ?: number, colNumber ?: number) {
         this.type = type;
         this.value = value;
+        this.lineNumber = lineNumber;
+        this.colNumber = colNumber;
     }
 
     is(tokenType: TokenType): boolean {

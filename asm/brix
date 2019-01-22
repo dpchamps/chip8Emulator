@@ -1,0 +1,160 @@
+MOV   $E, 5h              ; addr : 200; opcode : 0x6E05
+MOV   $5, 0h              ; addr : 202; opcode : 0x6500
+MOV   $B, 6h              ; addr : 204; opcode : 0x6B06
+:label-0x0206
+MOV   $A, 0h              ; addr : 206; opcode : 0x6A00
+:label-0x0208
+MVI   30Ch                ; addr : 208; opcode : 0xA30C
+DRAW  $A, $B, 1h          ; addr : 20A; opcode : 0xDAB1
+ADD   $A, 4h              ; addr : 20C; opcode : 0x7A04
+SKEQ  $A, 40h             ; addr : 20E; opcode : 0x3A40
+JMP   :label-0x0208       ; addr : 210; opcode : 0x1208
+ADD   $B, 2h              ; addr : 212; opcode : 0x7B02
+SKEQ  $B, 12h             ; addr : 214; opcode : 0x3B12
+JMP   :label-0x0206       ; addr : 216; opcode : 0x1206
+MOV   $C, 20h             ; addr : 218; opcode : 0x6C20
+MOV   $D, 1Fh             ; addr : 21A; opcode : 0x6D1F
+MVI   310h                ; addr : 21C; opcode : 0xA310
+DRAW  $C, $D, 1h          ; addr : 21E; opcode : 0xDCD1
+JSR   :label-0x02F6       ; addr : 220; opcode : 0x22F6
+MOV   $0, 0h              ; addr : 222; opcode : 0x6000
+MOV   $1, 0h              ; addr : 224; opcode : 0x6100
+MVI   312h                ; addr : 226; opcode : 0xA312
+DRAW  $0, $1, 1h          ; addr : 228; opcode : 0xD011
+ADD   $0, 8h              ; addr : 22A; opcode : 0x7008
+MVI   30Eh                ; addr : 22C; opcode : 0xA30E
+DRAW  $0, $1, 1h          ; addr : 22E; opcode : 0xD011
+:label-0x0230
+MOV   $0, 40h             ; addr : 230; opcode : 0x6040
+SDEL  $0                  ; addr : 232; opcode : 0xF015
+:label-0x0234
+GDEL  $0                  ; addr : 234; opcode : 0xF007
+SKEQ  $0, 0h              ; addr : 236; opcode : 0x3000
+JMP   :label-0x0234       ; addr : 238; opcode : 0x1234
+RAND  $6, Fh              ; addr : 23A; opcode : 0xC60F
+MOV   $7, 1Eh             ; addr : 23C; opcode : 0x671E
+MOV   $8, 1h              ; addr : 23E; opcode : 0x6801
+MOV   $9, FFh             ; addr : 240; opcode : 0x69FF
+MVI   30Eh                ; addr : 242; opcode : 0xA30E
+DRAW  $6, $7, 1h          ; addr : 244; opcode : 0xD671
+:label-0x0246
+MVI   310h                ; addr : 246; opcode : 0xA310
+DRAW  $C, $D, 1h          ; addr : 248; opcode : 0xDCD1
+MOV   $0, 4h              ; addr : 24A; opcode : 0x6004
+SKUP  $0                  ; addr : 24C; opcode : 0xE0A1
+ADD   $C, FEh             ; addr : 24E; opcode : 0x7CFE
+MOV   $0, 6h              ; addr : 250; opcode : 0x6006
+SKUP  $0                  ; addr : 252; opcode : 0xE0A1
+ADD   $C, 2h              ; addr : 254; opcode : 0x7C02
+MOV   $0, 3Fh             ; addr : 256; opcode : 0x603F
+AND   $C, $0              ; addr : 258; opcode : 0x8C02
+DRAW  $C, $D, 1h          ; addr : 25A; opcode : 0xDCD1
+MVI   30Eh                ; addr : 25C; opcode : 0xA30E
+DRAW  $6, $7, 1h          ; addr : 25E; opcode : 0xD671
+ADD   $6, $8              ; addr : 260; opcode : 0x8684
+ADD   $7, $9              ; addr : 262; opcode : 0x8794
+MOV   $0, 3Fh             ; addr : 264; opcode : 0x603F
+AND   $6, $0              ; addr : 266; opcode : 0x8602
+MOV   $1, 1Fh             ; addr : 268; opcode : 0x611F
+AND   $7, $1              ; addr : 26A; opcode : 0x8712
+SKNE  $7, 1Fh             ; addr : 26C; opcode : 0x471F
+JMP   :label-0x02AC       ; addr : 26E; opcode : 0x12AC
+:label-0x0270
+SKNE  $6, 0h              ; addr : 270; opcode : 0x4600
+MOV   $8, 1h              ; addr : 272; opcode : 0x6801
+SKNE  $6, 3Fh             ; addr : 274; opcode : 0x463F
+MOV   $8, FFh             ; addr : 276; opcode : 0x68FF
+SKNE  $7, 0h              ; addr : 278; opcode : 0x4700
+MOV   $9, 1h              ; addr : 27A; opcode : 0x6901
+DRAW  $6, $7, 1h          ; addr : 27C; opcode : 0xD671
+SKEQ  $F, 1h              ; addr : 27E; opcode : 0x3F01
+JMP   :label-0x02AA       ; addr : 280; opcode : 0x12AA
+SKNE  $7, 1Fh             ; addr : 282; opcode : 0x471F
+JMP   :label-0x02AA       ; addr : 284; opcode : 0x12AA
+MOV   $0, 5h              ; addr : 286; opcode : 0x6005
+SUB   $0, $7              ; addr : 288; opcode : 0x8075
+SKEQ  $F, 0h              ; addr : 28A; opcode : 0x3F00
+JMP   :label-0x02AA       ; addr : 28C; opcode : 0x12AA
+MOV   $0, 1h              ; addr : 28E; opcode : 0x6001
+SSND  $0                  ; addr : 290; opcode : 0xF018
+MOV   $0, $6              ; addr : 292; opcode : 0x8060
+MOV   $1, FCh             ; addr : 294; opcode : 0x61FC
+AND   $0, $1              ; addr : 296; opcode : 0x8012
+MVI   30Ch                ; addr : 298; opcode : 0xA30C
+DRAW  $0, $7, 1h          ; addr : 29A; opcode : 0xD071
+MOV   $0, FEh             ; addr : 29C; opcode : 0x60FE
+XOR   $9, $0              ; addr : 29E; opcode : 0x8903
+JSR   :label-0x02F6       ; addr : 2A0; opcode : 0x22F6
+ADD   $5, 1h              ; addr : 2A2; opcode : 0x7501
+JSR   :label-0x02F6       ; addr : 2A4; opcode : 0x22F6
+SKNE  $5, 60h             ; addr : 2A6; opcode : 0x4560
+JMP   :label-0x02DE       ; addr : 2A8; opcode : 0x12DE
+:label-0x02AA
+JMP   :label-0x0246       ; addr : 2AA; opcode : 0x1246
+:label-0x02AC
+MOV   $9, FFh             ; addr : 2AC; opcode : 0x69FF
+MOV   $0, $6              ; addr : 2AE; opcode : 0x8060
+SUB   $0, $C              ; addr : 2B0; opcode : 0x80C5
+SKEQ  $F, 1h              ; addr : 2B2; opcode : 0x3F01
+JMP   :label-0x02CA       ; addr : 2B4; opcode : 0x12CA
+MOV   $1, 2h              ; addr : 2B6; opcode : 0x6102
+SUB   $0, $1              ; addr : 2B8; opcode : 0x8015
+SKEQ  $F, 1h              ; addr : 2BA; opcode : 0x3F01
+JMP   :label-0x02E0       ; addr : 2BC; opcode : 0x12E0
+SUB   $0, $1              ; addr : 2BE; opcode : 0x8015
+SKEQ  $F, 1h              ; addr : 2C0; opcode : 0x3F01
+JMP   :label-0x02EE       ; addr : 2C2; opcode : 0x12EE
+SUB   $0, $1              ; addr : 2C4; opcode : 0x8015
+SKEQ  $F, 1h              ; addr : 2C6; opcode : 0x3F01
+JMP   :label-0x02E8       ; addr : 2C8; opcode : 0x12E8
+:label-0x02CA
+MOV   $0, 20h             ; addr : 2CA; opcode : 0x6020
+SSND  $0                  ; addr : 2CC; opcode : 0xF018
+MVI   30Eh                ; addr : 2CE; opcode : 0xA30E
+ADD   $E, FFh             ; addr : 2D0; opcode : 0x7EFF
+MOV   $0, $E              ; addr : 2D2; opcode : 0x80E0
+ADD   $0, $0              ; addr : 2D4; opcode : 0x8004
+MOV   $1, 0h              ; addr : 2D6; opcode : 0x6100
+DRAW  $0, $1, 1h          ; addr : 2D8; opcode : 0xD011
+SKEQ  $E, 0h              ; addr : 2DA; opcode : 0x3E00
+JMP   :label-0x0230       ; addr : 2DC; opcode : 0x1230
+:label-0x02DE
+JMP   :label-0x02DE       ; addr : 2DE; opcode : 0x12DE
+:label-0x02E0
+ADD   $8, FFh             ; addr : 2E0; opcode : 0x78FF
+SKNE  $8, FEh             ; addr : 2E2; opcode : 0x48FE
+MOV   $8, FFh             ; addr : 2E4; opcode : 0x68FF
+JMP   :label-0x02EE       ; addr : 2E6; opcode : 0x12EE
+:label-0x02E8
+ADD   $8, 1h              ; addr : 2E8; opcode : 0x7801
+SKNE  $8, 2h              ; addr : 2EA; opcode : 0x4802
+MOV   $8, 1h              ; addr : 2EC; opcode : 0x6801
+:label-0x02EE
+MOV   $0, 4h              ; addr : 2EE; opcode : 0x6004
+SSND  $0                  ; addr : 2F0; opcode : 0xF018
+MOV   $9, FFh             ; addr : 2F2; opcode : 0x69FF
+JMP   :label-0x0270       ; addr : 2F4; opcode : 0x1270
+:label-0x02F6
+MVI   314h                ; addr : 2F6; opcode : 0xA314
+BCD   $5                  ; addr : 2F8; opcode : 0xF533
+LDR   2h                  ; addr : 2FA; opcode : 0xF265
+FONT  $1                  ; addr : 2FC; opcode : 0xF129
+MOV   $3, 37h             ; addr : 2FE; opcode : 0x6337
+MOV   $4, 0h              ; addr : 300; opcode : 0x6400
+DRAW  $3, $4, 5h          ; addr : 302; opcode : 0xD345
+ADD   $3, 5h              ; addr : 304; opcode : 0x7305
+FONT  $2                  ; addr : 306; opcode : 0xF229
+DRAW  $3, $4, 5h          ; addr : 308; opcode : 0xD345
+RET                       ; addr : 30A; opcode : 0x00EE
+DATA	30Ch, E0h
+DATA	30Dh, 0h
+DATA	30Eh, 80h
+DATA	30Fh, 0h
+DATA	310h, FCh
+DATA	311h, 0h
+DATA	312h, AAh
+DATA	313h, 0h
+DATA	314h, 0h
+DATA	315h, 0h
+DATA	316h, 0h
+DATA	317h, 0h

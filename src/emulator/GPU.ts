@@ -12,6 +12,7 @@ export class GPU implements IComponent {
 
     constructor(canvas: undefined | HTMLCanvasElement = undefined) {
         this.screen = new Uint8Array(GPU.WIDTH * GPU.HEIGHT);
+        this.canvas = canvas;
         if (canvas)
             this.canvasSetup();
 
