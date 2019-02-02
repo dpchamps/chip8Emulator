@@ -8,6 +8,10 @@ This repo is the product of the first part of the series "Let's Have Fun With In
 
 [Chapter 3](https://medium.com/@davewritescode/lets-have-fun-with-interpreters-and-bytecode-vms-chapter-3-f2392de2e269?source=your_stories_page---------------------------)
 
+**Chapter 4** - In the works
+
+**Chapter 5** - Final chapter for this project.
+
 ## Status
 
 The project as it stands provides a complete assembler / disassembler and emulator for the Chip 8.
