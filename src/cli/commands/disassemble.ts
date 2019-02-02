@@ -3,8 +3,8 @@ import {loadFile} from "../modules/loadFile";
 import {getOpcodesFromBuffer} from "../../util/OpcodeUtils";
 import {writeFile} from "../modules/writeFile";
 
-const usage = `DISASSEMBLE filename
-    Disassembles a file.`;
+const usage = `DISASSEMBLE filename [saveFile]
+    Disassembles a file. Note: saved files are placed in root directory asm/`;
 
 export const disassemble = async (args: Array<string>): Promise<string> => {
     const [filename, fileToSave] = args;

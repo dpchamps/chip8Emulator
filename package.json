@@ -10,10 +10,7 @@
     "REPL": "ts-node src/cli"
   },
   "keywords": [
-    "lets",
-    "do",
-    "a",
-    "javascript"
+    "chip8"
   ],
   "author": "Dave Campion",
   "license": "MIT",

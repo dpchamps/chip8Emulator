@@ -4,8 +4,8 @@ import {Assembler} from "../../Assembler";
 import {bytecodeArrayToString} from "../../util/OpcodeUtils";
 import {writeFile} from "../modules/writeFile";
 
-const usage = `ASSEMBLE filename
-    Assembles a file.`;
+const usage = `ASSEMBLE filename [saveFile]
+    Assembles a file. Note: saved files are placed in root directory roms/`;
 
 export const assemble = async (args: Array<string>): Promise<string> => {
     const [filename, fileToWrite] = args;

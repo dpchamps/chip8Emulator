@@ -7,7 +7,19 @@ import {executeTicks} from "./commands/executeTicks";
 import {outputBinary} from "./commands/outputBinary";
 import {assemble} from "./commands/assemble";
 
+const showCommands = () => {
+    console.log(`Available commands:
+                        ${commands.EXIT} - Exit the cli.
+                        ${commands.OPCODE} - disassemble an opcode.
+                        ${commands.DISASSEMBLE} - disassemble a program.
+                        ${commands.SCAN} - scan a program, from offset.
+                        ${commands.EXECUTE} - execute a program for n ticks at fps.
+                        ${commands.BINARY} - output a chip binary as a UInt8 Array.
+                        ${commands.ASSEMBLE} - assemble a program.
+                    `);
+};
 const REPL = async () => {
+    showCommands();
     let isRunning = true;
     while (isRunning) {
         try {
@@ -38,15 +50,7 @@ const REPL = async () => {
                     console.log(await assemble(args));
                     break;
                 default:
-                    console.log(`Available commands:
-                        ${commands.EXIT} - Exit the cli.
-                        ${commands.OPCODE} - disassemble an opcode.
-                        ${commands.DISASSEMBLE} - disassemble a program.
-                        ${commands.SCAN} - scan a program, from offset.
-                        ${commands.EXECUTE} - execute a program for n ticks at fps.
-                        ${commands.BINARY} - output a chip binary as a UInt8 Array.
-                        ${commands.ASSEMBLE} - assemble a program.
-                    `);
+                    showCommands();
 
             }
         } catch (error) {
