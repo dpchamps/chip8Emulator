@@ -2,16 +2,17 @@ import {Token} from "../Token";
 import {TokenType} from "../types/TokenType";
 import {AssemblerError} from "../errors/AssemblerError";
 import {IOpcodeBytes} from "../interfaces/IOpcodeBytes";
+import {IAssemblyData} from "../interfaces/IAssemblyData";
 
 export abstract class AsmInstruction {
-    abstract readonly EXPECTED_PARAMETER_LENGTH: number;
-    abstract readonly instruction: Token;
+    public abstract readonly assemblyData: IAssemblyData;
 
     protected abstract setBytesFromInstruction(): void;
 
     protected abstract setBytesFromParams(): void;
 
     protected params: Array<Token> = [];
+
     protected bytes: IOpcodeBytes = {
         msb: 0,
         lsb: 0,
@@ -20,6 +21,12 @@ export abstract class AsmInstruction {
         kk: 0,
         nnn: 0
     };
+
+    readonly instruction: Token;
+
+    constructor(instruction: Token) {
+        this.instruction = instruction;
+    }
 
     public addParam(token: Token) {
         if (token.is(TokenType.DATA) || token.is(TokenType.INSTRUCTION))
@@ -35,16 +42,17 @@ export abstract class AsmInstruction {
             throw new AssemblerError('Attempted to resolve a label that doesn\'t exist.');
 
         if (!param.equals(labelName))
-            throw new AssemblerError(`Attempted to resolve mismatches label ${labelName}`, param);
+            throw new AssemblerError(`Attempted to resolve mismatched label ${labelName}`, param);
 
         this.params[paramNumber] = new Token(TokenType.INTEGER, memoryLocation);
     }
 
-    public assemble() : number {
+    public assemble(): number {
         this.validate();
         this.setBytesFromInstruction();
         this.setBytesFromParams();
 
+        //prep the opcode bytes for assembling into a proper opcode
         this.bytes = {
             ...this.bytes,
             msb: this.bytes.msb << 12,
@@ -52,28 +60,18 @@ export abstract class AsmInstruction {
             y: this.bytes.y << 4,
         };
 
-        return 0;
+        return this.assemblyData.assemblyBytes
+            .map(byte => this.bytes[byte])
+            .reduce((number, nextByte) => number | nextByte, 0);
     }
 
+    /**
+     * Preform validation on the assembler. If too few or too many parameters have been added, the assembler will
+     * not be able to produce a valid program.
+     */
     protected validate() {
-        if (this.params.length !== this.EXPECTED_PARAMETER_LENGTH) {
-            throw new AssemblerError(`Expected exactly ${this.EXPECTED_PARAMETER_LENGTH} parameters, but got ${this.params.length} instead.`, this.instruction);
+        if (this.params.length !== this.assemblyData.nArgs) {
+            throw new AssemblerError(`Expected exactly ${this.assemblyData.nArgs} parameters, but got ${this.params.length} instead.`, this.instruction);
         }
-    }
-
-    protected verify(potentialOpcode: string) {
-        if (isNaN(Number(potentialOpcode)))
-            throw new AssemblerError(`Couldn't parse instruction`, this.instruction);
-    }
-
-    protected createOpcode(...params: Array<number>) {
-        const padding = 4 - params.length - 1;
-        let opcodeString = '0x';
-
-        params.forEach(param => opcodeString += param.toString(16));
-
-        this.verify(opcodeString);
-
-        return Number(opcodeString);
     }
 }

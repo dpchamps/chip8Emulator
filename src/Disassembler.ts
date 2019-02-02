@@ -5,7 +5,6 @@ import {Instruction} from "./types/Instruction";
 import {DisassemblerError} from "./errors/Chip8Errors";
 import {toHexString, toOpcodeString} from "./util/OpcodeUtils";
 import {DataCode} from "./DataCode";
-import {add} from "./emulator/opcodes/math";
 
 export class Disassembler {
     static MAX_BRANCHES = STACK_LENGTH * 3;

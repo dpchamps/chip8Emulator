@@ -25,7 +25,7 @@ export default class App extends Component<IAppProps, any> {
     readonly state: IAppState = {
         program: new Uint8Array([]),
         currentInstruction: PROGRAM_OFFSET,
-        isStep: true,
+        isStep: false,
         canStep: true
     };
 

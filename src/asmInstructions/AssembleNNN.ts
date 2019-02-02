@@ -1,23 +1,14 @@
-import {Token} from "../Token";
 import {AsmInstruction} from "./AsmInstruction";
 import {Instruction} from "../types/Instruction";
-import {AssemblerError, ASM_ERROR_CODE, InternalAssemblerError} from "../errors/AssemblerError";
+import {ASM_ERROR_CODE, InternalAssemblerError} from "../errors/AssemblerError";
+import {IAssemblyData} from "../interfaces/IAssemblyData";
+import {OPCODE_BYTE} from "../types/OpcodeByte";
 
 export class AssembleNNN extends AsmInstruction {
-    readonly EXPECTED_PARAMETER_LENGTH: number = 1;
-    readonly instruction: Token;
-
-    constructor(token: Token) {
-        super();
-        this.instruction = token;
-    }
-
-    assemble(): number {
-        super.assemble();
-        const {msb, nnn} = this.bytes;
-
-        return msb | nnn;
-    }
+    public readonly assemblyData: IAssemblyData = {
+        nArgs: 1,
+        assemblyBytes: [OPCODE_BYTE.MSB, OPCODE_BYTE.NNN]
+    };
 
     setBytesFromInstruction(): void {
         switch (this.instruction.value) {

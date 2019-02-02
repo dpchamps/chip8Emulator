@@ -67,6 +67,20 @@ export class Lexer {
     }
 
     /**
+     * Vomit the last character
+     */
+    private retreat() {
+        this.index -= 1;
+        this.currentCol -= 1;
+        this.currentChar = this.buffer[this.index];
+
+        if (this.is(NEWLINE)) {
+            this.currentLine -= 1;
+            this.currentCol = 0;
+        }
+    }
+
+    /**
      * For error reporting. Returns the last and next couple of characters, emphasizing the current char.
      */
     private getContext(): string {
@@ -96,10 +110,11 @@ export class Lexer {
      * Attempts to lex a digit. If it fails, it rolls back the advances and returns a number that is NaN
      */
     private getDigit(): number {
-        let str = '';
+        let charBuffer = '';
+        let numberRadix = '';
 
         while (this.is(DIGIT)) {
-            str += this.currentChar;
+            charBuffer += this.currentChar;
             this.advance();
         }
 
@@ -107,27 +122,35 @@ export class Lexer {
         if (this.is(RADIX)) {
             switch (this.currentChar!.toLowerCase()) {
                 case HEX_RADIX:
-                    str = '0x' + str;
+                    numberRadix = '0x';
                     break;
                 case OCT_RADIX:
-                    str = '0o' + str;
+                    numberRadix = '0o';
                     break;
                 case BIN_RADIX:
-                    str = '0b' + str;
+                    numberRadix = '0b';
+                    break
             }
-            //clear the radix symbol
+            //consume the radix symbol
             this.advance();
         }
 
         //Because we're anticipating hexadecimal digits, there's some potential collision between char / digit
         // e.g: AND $1, $2; the `AND` string will be lexed as a digit first (a is a valid digit).
         // So when we get to the end of our digit, we check if it's actually a number. If not, rollback the changes.
-        if (isNaN(Number(str))) {
-            this.index -= str.length + 1;
-            this.advance();
+        if (isNaN(Number(numberRadix + charBuffer))) {
+            while (charBuffer.length) {
+                this.retreat();
+                charBuffer = charBuffer.slice(0, charBuffer.length - 1)
+            }
+            //If a number radix has been set, roll back the radix advance
+            if (numberRadix)
+                this.retreat();
+
+            return NaN
         }
 
-        return Number(str);
+        return Number(numberRadix + charBuffer);
     }
 
 

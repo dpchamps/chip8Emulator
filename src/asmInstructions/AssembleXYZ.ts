@@ -1,21 +1,12 @@
 import {AsmInstruction} from "./AsmInstruction";
-import {Token} from "../Token";
+import {OPCODE_BYTE} from "../types/OpcodeByte";
+import {IAssemblyData} from "../interfaces/IAssemblyData";
 
 export class AssembleXYZ extends AsmInstruction {
-    readonly EXPECTED_PARAMETER_LENGTH: number = 3;
-    readonly instruction: Token;
-
-    constructor(token: Token) {
-        super();
-        this.instruction = token;
-    }
-
-    assemble(): number {
-        super.assemble();
-        const {msb, x, y, lsb} = this.bytes;
-
-        return msb | x | y | lsb;
-    }
+    public readonly assemblyData: IAssemblyData = {
+        nArgs: 3,
+        assemblyBytes: [OPCODE_BYTE.MSB, OPCODE_BYTE.X, OPCODE_BYTE.Y, OPCODE_BYTE.LSB]
+    };
 
     protected setBytesFromInstruction(): void {
         this.bytes.msb = 0xD;

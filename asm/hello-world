@@ -1,7 +1,9 @@
 ;Writes Hello World to the screen
-:draw-loop
 MOV $2, 8h
 MOV $3, 5h
+
+:draw-loop
+
 MVI 300h
 JSR :draw-next
 
@@ -32,10 +34,12 @@ JSR :draw-next
 MVI 30Ch
 JSR :draw-next
 
-FONT Dh
+MVI 31Fh
 JSR :draw-next
 
-ADD $4, 1h
+JSR :wait
+MOV $5, 1h
+ADD $4, $5
 MOV $1, $4
 CLS
 JMP :draw-loop
@@ -46,9 +50,22 @@ ADD $1, $3
 DRAW $1, $2, 5h
 RET
 
+;Infinite loop, end program
+:end-loop
+JMP :end-loop
+
+:wait
+MVI 324h;
+LDR $0
+SDEL $0;
+JSR :count-down
+RET;
+
+:count-down
+GDEL $0
+SKNE $0, 0
 RET
-:endloop
-JMP :endloop
+JMP :count-down
 
 ;Letters
 DATA 300h, 10010000n ; H
@@ -77,8 +94,16 @@ DATA 317h, 00010000n ; W second half
            10110000n
            11110000n
 
-DATA 31Dh, 11110000n
+DATA 31Dh, 11110000n ; R
            10010000n
            11110000n
            10110000n
            10110000n
+
+DATA 31Fh, 11100000n ; D
+           10010000n
+           10010000n
+           10010000n
+           11100000n
+
+DATA 324h Fh; Delay Timer

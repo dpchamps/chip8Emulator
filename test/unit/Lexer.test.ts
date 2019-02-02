@@ -1,6 +1,5 @@
 import {Lexer} from "../../src/Lexer";
 import {LexerError} from "../../src/errors/LexerErrors";
-import {CHAR, NEWLINE, OCT_RADIX, HEX_RADIX, RADIX, DIGIT, WHITESPACE, REGISTER, LABEL, COMMENT} from "../../src/LexerSymbol";
 import {TokenType} from "../../src/types/TokenType";
 import {Instruction} from "../../src/types/Instruction";
 
@@ -156,7 +155,13 @@ describe('Lexer', () => {
             tokens.pop();
 
             tokens.forEach((token, index) => {
-                expect(token.type).toBe(TokenType.INSTRUCTION);
+                if (token.equals(Instruction.DATA)) {
+                    //Account for a special case here: DATA instructions are not instruction tokens, but
+                    //  a message for the assembler.
+                    expect(token.type).toBe(TokenType.DATA);
+                } else {
+                    expect(token.type).toBe(TokenType.INSTRUCTION);
+                }
                 expect(token.value).toBe(instructions[index]);
             });
         });
@@ -172,12 +177,12 @@ describe('Lexer', () => {
     });
 
     it('Should throw an error upon encountering an unexpected character', () => {
-       const lex = new Lexer("ADD 1 + 2");
-       const shouldThrow = () => {
-           lex.tokenize();
-       };
+        const lex = new Lexer("ADD 1 + 2");
+        const shouldThrow = () => {
+            lex.tokenize();
+        };
 
-       expect(shouldThrow).toThrow(LexerError);
+        expect(shouldThrow).toThrow(LexerError);
     });
 
     it('The last token of the token stream should be EOF', () => {

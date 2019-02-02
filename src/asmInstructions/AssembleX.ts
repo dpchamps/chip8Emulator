@@ -1,24 +1,14 @@
 import {AsmInstruction} from "./AsmInstruction";
-import {Token} from "../Token";
 import {Instruction} from "../types/Instruction";
 import {ASM_ERROR_CODE, InternalAssemblerError} from "../errors/AssemblerError";
+import {IAssemblyData} from "../interfaces/IAssemblyData";
+import {OPCODE_BYTE} from "../types/OpcodeByte";
 
 export class AssembleX extends AsmInstruction {
-    readonly EXPECTED_PARAMETER_LENGTH: number = 1;
-    readonly instruction: Token;
-
-    constructor(token: Token) {
-        super();
-
-        this.instruction = token;
-    }
-
-    assemble(): number {
-        super.assemble();
-        const {msb, x, y, lsb} = this.bytes;
-
-        return msb | x | y | lsb;
-    }
+    public readonly assemblyData: IAssemblyData = {
+        nArgs: 1,
+        assemblyBytes: [OPCODE_BYTE.MSB, OPCODE_BYTE.X, OPCODE_BYTE.Y, OPCODE_BYTE.LSB]
+    };
 
     setBytesFromInstruction(): void {
         switch (this.instruction.value) {
@@ -88,7 +78,6 @@ export class AssembleX extends AsmInstruction {
         }
 
     }
-
 
     protected setBytesFromParams(): void {
         const [x] = this.params;

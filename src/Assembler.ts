@@ -2,16 +2,18 @@ import {Token} from "./Token";
 import {TokenType} from "./types/TokenType";
 import {AssemblerError} from "./errors/AssemblerError";
 import {AsmInstruction} from "./asmInstructions/AsmInstruction";
-import {PROGRAM_OFFSET} from "./types/Chip8Specs";
+import {MEMORY_LENGTH, PROGRAM_OFFSET} from "./types/Chip8Specs";
 import {ILabelReference} from "./interfaces/ILabelReference";
 import {asmInstructionFactory} from "./asmInstructions/asmInstructionFactory";
 
 export class Assembler {
     public readonly program: Uint8Array = new Uint8Array([]);
 
-    private tokens: Array<Token>;
+    private readonly tokens: Array<Token>;
     //keeps track all all valid asm instructions
     private instructions: Array<AsmInstruction> = [];
+    //Keep track of all program labels
+    private programLabels: Array<string> = [];
     //Stores a label name at where it occurred in the assembly (referred to as the program index).
     private labelLocations: Map<number, string> = new Map();
     //Stores all references made to program labels
@@ -63,7 +65,7 @@ export class Assembler {
         if (assembler === false)
             throw new AssemblerError('Encountered a mysterious token', token);
 
-        for (let i = 0; i < assembler.EXPECTED_PARAMETER_LENGTH; i += 1) {
+        for (let i = 0; i < assembler.assemblyData.nArgs; i += 1) {
             const param = this.getNextToken();
 
             //If the parameter token is a label, we need to keep track of it and resolve it to an actual memory address down the line
@@ -78,10 +80,11 @@ export class Assembler {
     }
 
     private parseProgramLabelToken(token: Token): void {
-        if (this.labelLocations.has(token.value))
+        if (this.programLabels.includes(token.value))
             throw new AssemblerError(`Received a duplicate label token`, token);
 
         this.labelLocations.set(this.instructions.length, token.value);
+        this.programLabels.push(token.value);
     }
 
     /**
@@ -201,9 +204,18 @@ export class Assembler {
      * For each byte in the program, write data and assembled instructions to a buffer.
      */
     private generateProgram(): Uint8Array {
-        const programSize: number = Math.max((this.maxDataOffset - PROGRAM_OFFSET), this.instructions.length * 2 + this.data.size);
+        const programSize: number = Math.max(
+            this.maxDataOffset - PROGRAM_OFFSET,
+            this.instructions.length * 2 + this.data.size
+        );
         const program: Array<number> = new Array<number>(programSize).fill(0);
         const memoryMap = this.calculateMemoryLocations();
+
+        //The program is invalid if the calculated program size if greater
+        // than the size of the chip8 memory space.
+        //Note: we have to account from whatever the program size it + the program offset.
+        if ((programSize+PROGRAM_OFFSET) > MEMORY_LENGTH)
+            throw new AssemblerError('Assembled program is greater than max chip memory space.');
 
         for (let programIndex = 0; programIndex < programSize; programIndex += 1) {
             let memoryIndex = programIndex + PROGRAM_OFFSET;
