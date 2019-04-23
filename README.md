@@ -1,16 +1,5 @@
 # Chip 8
 
-This repo is the product of the first part of the series "Let's Have Fun With Interpreters and Bytecode VM's," which can be found here:
-
-[Chapter 1](https://medium.com/@davewritescode/lets-have-fun-with-interpreters-and-bytecode-vms-chapter-1-7876ade6bb5c?source=your_stories_page---------------------------)
-
-[Chapter 2](https://medium.com/@davewritescode/lets-have-fun-with-interpreters-and-bytecode-vms-chapter-2-1f6849bb1b55?source=your_stories_page---------------------------)
-
-[Chapter 3](https://medium.com/@davewritescode/lets-have-fun-with-interpreters-and-bytecode-vms-chapter-3-f2392de2e269?source=your_stories_page---------------------------)
-
-**Chapter 4** - In the works
-
-**Chapter 5** - Final chapter for this project.
 
 ## Status
 
